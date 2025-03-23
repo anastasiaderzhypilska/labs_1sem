@@ -1,0 +1,21 @@
+import math
+
+a = 0.5
+b = 0.8
+h = 0.02
+
+x = a
+
+while x <= b:
+    if x < 0.6:
+        result = math.exp(x - math.sin(x))  # e^(x - sin(x))
+    elif 0.6 <= x < 0.7:
+        result = math.tan(abs(math.log(x)))  # tg(|ln(x)|)
+    else:
+        result = math.atan(x ** 7)  # arctg(x^7)
+    
+    print(f"x = {x}, f(x) = {result:f}")
+    
+    x += h
+    x = round(x, 2)
+    print(x)
