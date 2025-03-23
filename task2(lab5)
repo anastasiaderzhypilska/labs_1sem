@@ -1,0 +1,40 @@
+class Furniture:
+    def __init__(self, name, x1, y1, x2, y2):
+        self.name = name
+        self.coordinates = (x1, y1, x2, y2)
+
+    def display(self):
+        print(f"{self.name} is located at {self.coordinates}")
+
+class Room:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.furniture_items = []
+        print(f"Room created with area: {self.width * self.height} square units")
+
+    def add_furniture(self, furniture):
+        self.furniture_items.append(furniture)
+
+    def display_room_plan(self):
+        grid = [["." for _ in range(self.width)] for _ in range(self.height)]
+        
+        for item in self.furniture_items:
+            x1, y1, x2, y2 = item.coordinates
+            for y in range(y1, y2 + 1):
+                for x in range(x1, x2 + 1):
+                    grid[y][x] = item.name[0]
+        
+        print("\nRoom Plan:")
+        for row in grid:
+            print(" ".join(row))
+
+width, height = 6, 6  
+my_room = Room(width, height)
+
+my_room.add_furniture(Furniture("Bed", 0, 0, 2, 2))      
+my_room.add_furniture(Furniture("Sofa", 3, 0, 5, 2))     
+my_room.add_furniture(Furniture("Table", 0, 3, 2, 5))    
+my_room.add_furniture(Furniture("Carpet", 3, 3, 5, 5))   
+
+my_room.display_room_plan()
