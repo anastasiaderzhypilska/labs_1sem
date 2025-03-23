@@ -1,0 +1,56 @@
+class Zoo:
+    public_number = 0  
+    public_string = "default" 
+
+    def __init__(self, visitors=0, name="", animals=0):
+        self.__visitors = visitors 
+        self.__name = name  
+        self.__animals = animals  
+
+    def __del__(self):
+        print(f"Zoo {self.__name} is being destroyed")
+
+    def getVisitors(self):
+        return self.__visitors
+
+    def setVisitors(self, visitors):
+        self.__visitors = visitors
+
+    def getName(self):
+        return self.__name
+
+    def setName(self, name):
+        self.__name = name
+
+    def getAnimals(self):
+        return self.__animals
+
+    def setAnimals(self, animals):
+        self.__animals = animals
+
+    def __str__(self):
+        return f"Zoo(name={self.__name}, visitors={self.__visitors}, animals={self.__animals}, public_number={self.public_number}, public_string=\"{self.public_string}\")"
+
+    def __repr__(self):
+        return f"Zoo({self.__name}, {self.__visitors}, {self.__animals})"
+
+def main():
+    zoo1 = Zoo(50000, "City Zoo", 200)
+    zoo2 = Zoo(75000, "Safari Park", 300)
+    zoo3 = Zoo(100000, "National Zoo", 500)
+
+    zoo1.public_number = 1
+    zoo1.public_string = "Urban Area"
+
+    zoo2.public_number = 2
+    zoo2.public_string = "Wildlife Reserve"
+
+    zoo3.public_number = 3
+    zoo3.public_string = "National Park"
+
+    print(zoo1)
+    print(zoo2)
+    print(zoo3)
+
+if __name__ == "__main__":
+    main()
