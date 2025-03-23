@@ -1,0 +1,26 @@
+import math
+
+a = -1
+b = 1
+h = 0.5
+d = 0.001 
+
+def calculate_series(x, d):
+    k = 1
+    sum_series = 0
+    term = float('inf')  
+    
+    while abs(term) > d:
+        term = ((-1) ** k * x) / (k * (k + 1)) - math.sin(2 * k + 1)
+        sum_series += term
+        k += 1
+    
+    return sum_series
+
+x = a
+
+while x <= b:
+    result = calculate_series(x, d)
+    print(f"x = {x:.2f}, f(x) = {result:.6f}")
+    
+    x += h
